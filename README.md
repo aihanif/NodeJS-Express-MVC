@@ -3,6 +3,8 @@
 # 📝 Todo Task App (Node.js + Express + MVC)
   
 A simple and clean Todo list application built with **Node.js**, **Express**, and the **MVC (Model-View-Controller)** pattern. This app features a responsive interface using **Bootstrap 5** and handles tasks in memory.
+<img width="1690" height="693" alt="image" src="https://github.com/user-attachments/assets/b121cb9b-0208-43e8-8b67-1f4bb2888c8f" />
+
   
 ## 🚀 Features  
 - ✅ Add, edit, and delete tasks  
