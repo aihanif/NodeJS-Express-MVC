@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo Task App (MVC)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="mb-4">Todo Task App (MVC)</h1>
+    <form action="/add" method="POST" class="mb-4" id="addTaskForm">
+      <div class="input-group">
+        <input type="text" name="title" class="form-control" placeholder="Masukkan task baru" required>
+        <button class="btn btn-primary" type="submit">Tambah</button>
+      </div>
+    </form>
+    <ul class="list-group mb-4" id="taskList">
+      <% tasks.forEach(task => { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span><%= task.title %></span>
+          <div>
+            <button type="button" class="btn btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<%= task.id %>" data-title="<%= task.title.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;') %>">Kemaskini</button>
+            <form action="/delete/<%= task.id %>" method="POST" style="display:inline">
+              <button type="submit" class="btn btn-sm btn-danger">Padam</button>
+            </form>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <!-- Modal untuk kemaskini task -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="editTaskForm" method="POST">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Kemaskini Task</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" name="title" id="editTaskTitle" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Populate modal with task data
+    var editModal = document.getElementById('editModal');
+    editModal.addEventListener('show.bs.modal', function (event) {
+      var button = event.relatedTarget;
+      var id = button.getAttribute('data-id');
+      var title = button.getAttribute('data-title');
+      var inputTitle = document.getElementById('editTaskTitle');
+      inputTitle.value = title;
+      var form = document.getElementById('editTaskForm');
+      form.action = '/edit/' + id;
+    });
+  </script>
+</body>
+</html> 
