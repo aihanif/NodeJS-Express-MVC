@@ -24,7 +24,7 @@ A simple and clean Todo list application built with **Node.js**, **Express**, an
   
 Visit the app at: http://localhost:3000 
 
-💡 Notes
-Tasks are stored in memory and will be lost on server restart.
-To make data persistent, integrate a database in models/taskModel.js.
-Bootstrap 5 is included via CDN in the header.ejs partial.
+💡 Notes  
+Tasks are stored in memory and will be lost on server restart.  
+To make data persistent, integrate a database in models/taskModel.js.  
+Bootstrap 5 is included via CDN in the header.ejs partial.  
