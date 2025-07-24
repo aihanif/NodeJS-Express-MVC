@@ -18,11 +18,14 @@ A simple and clean Todo list application built with **Node.js**, **Express**, an
 <img width="197" height="421" alt="image" src="https://github.com/user-attachments/assets/f6bf2b31-634a-4e15-8d2d-3c774db59d70" />
 
 
-1. Install Dependencies
-   npm install express ejs
+1. Initiate npm  
+   npm init -y  
    
-2. Run the App
-   node app.js
+2. Install Dependencies  
+   npm install express ejs  
+   
+3. Run the App  
+   node app.js  
   
 Visit the app at: http://localhost:3000 
 
